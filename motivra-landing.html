@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Motivra — Een beweeggewoonte die blijft</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script:wght@600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --forest:   #2B3210;
+    --cream:    #FBF8EF;
+    --orange:   #DE6E27;
+    --sand:     #E5E2D9;
+    --olive:    #505631;
+    --gold:     #B8943F;
+    --text:     #2B3210;
+    --text-sec: #505631;
+    --text-dim: #8A9070;
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--text);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+
+  .display { font-family: 'Anton', sans-serif; letter-spacing: -0.01em; line-height: 0.95; }
+  .script  { font-family: 'Dancing Script', cursive; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    height: 68px;
+    padding: 0 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(251,248,239,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(43,50,16,0.08);
+  }
+
+  .nav-logo {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.5rem;
+    color: var(--forest);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+  }
+
+  .nav-logo-script {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.1rem;
+    color: var(--orange);
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+
+  .nav-links a {
+    font-size: 0.78rem;
+    color: var(--text-sec);
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--forest); }
+
+  .nav-cta {
+    background: var(--orange);
+    color: var(--cream);
+    border: none;
+    padding: 0.65rem 1.6rem;
+    border-radius: 100px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .nav-cta:hover { background: var(--forest); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding-top: 68px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -120px; right: -120px;
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: var(--sand);
+    z-index: 0;
+  }
+
+  .hero-left {
+    padding: 6rem 4rem 6rem 6rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    opacity: 0;
+    animation: riseIn 1s ease 0.2s forwards;
+  }
+
+  @keyframes riseIn {
+    from { opacity:0; transform:translateY(20px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .eyebrow-line { width: 32px; height: 1.5px; background: var(--orange); }
+
+  .eyebrow-text {
+    font-size: 0.68rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--orange);
+    font-weight: 600;
+  }
+
+  .hero-headline {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(3.5rem, 6vw, 6.5rem);
+    line-height: 0.93;
+    color: var(--forest);
+    margin-bottom: 0.3rem;
+  }
+
+  .hero-script {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.2rem, 3.8vw, 4.2rem);
+    font-weight: 600;
+    color: var(--orange);
+    line-height: 1.2;
+    display: block;
+    margin-bottom: 2rem;
+  }
+
+  .hero-sub {
+    font-size: 1rem;
+    color: var(--text-sec);
+    max-width: 420px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+  }
+
+  .hero-sub strong { color: var(--forest); font-weight: 600; }
+
+  .hero-actions { display: flex; gap: 12px; margin-bottom: 3rem; flex-wrap: wrap; }
+
+  .btn-primary {
+    background: var(--orange);
+    color: var(--cream);
+    border: none;
+    padding: 1rem 2.2rem;
+    border-radius: 100px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary:hover { background: var(--forest); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(43,50,16,0.15); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--forest);
+    border: 1.5px solid rgba(43,50,16,0.3);
+    padding: 1rem 2rem;
+    border-radius: 100px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .btn-outline:hover { background: var(--forest); color: var(--cream); transform: translateY(-2px); border-color: var(--forest); }
+
+  .hero-proof { display: flex; align-items: center; gap: 1rem; }
+
+  .proof-avs { display: flex; }
+
+  .proof-av {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--sand);
+    border: 2px solid var(--cream);
+    margin-left: -8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--text-sec);
+  }
+
+  .proof-av:first-child { margin-left: 0; }
+  .proof-av.o { background: var(--orange); color: var(--cream); }
+
+  .proof-text { font-size: 0.8rem; color: var(--text-sec); line-height: 1.4; }
+  .proof-text strong { color: var(--forest); font-weight: 600; }
+
+  /* HERO RIGHT */
+  .hero-right {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5rem 4rem;
+    opacity: 0;
+    animation: riseIn 1s ease 0.5s forwards;
+  }
+
+  .hero-graphic { position: relative; width: 360px; }
+
+  .hg-card {
+    background: var(--forest);
+    border-radius: 28px 28px 80px 28px;
+    padding: 2.2rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hg-card::before {
+    content: '';
+    position: absolute;
+    top: -50px; right: -50px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(222,110,39,0.1);
+  }
+
+  .hg-label {
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(251,248,239,0.45);
+    margin-bottom: 0.4rem;
+  }
+
+  .hg-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.45rem;
+    color: var(--cream);
+    margin-bottom: 0.25rem;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+  }
+
+  .hg-meta {
+    font-size: 0.68rem;
+    color: rgba(251,248,239,0.4);
+    margin-bottom: 1.2rem;
+  }
+
+  .hg-week { display: flex; gap: 5px; margin-bottom: 1.2rem; }
+
+  .hg-day {
+    flex: 1;
+    height: 32px;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: rgba(251,248,239,0.35);
+  }
+
+  .hg-day span { font-size: 0.52rem; text-transform: uppercase; opacity: 0.7; }
+  .hg-day.done  { background: rgba(222,110,39,0.2); color: var(--orange); }
+  .hg-day.today { background: var(--orange); color: var(--cream); }
+  .hg-day.miss  { background: rgba(251,248,239,0.05); }
+  .hg-day.fut   { background: rgba(251,248,239,0.03); }
+
+  .hg-btn {
+    background: var(--orange);
+    color: var(--cream);
+    border: none;
+    width: 100%;
+    padding: 0.82rem;
+    border-radius: 12px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .float-card {
+    position: absolute;
+    background: var(--cream);
+    border-radius: 16px;
+    padding: 0.9rem 1.1rem;
+    box-shadow: 0 12px 36px rgba(43,50,16,0.14);
+  }
+
+  .float-card.tr { top: -18px; right: -24px; }
+  .float-card.bl { bottom: -14px; left: -26px; }
+
+  .fc-val { font-family: 'Anton', sans-serif; font-size: 2rem; line-height: 1; color: var(--forest); margin-bottom: 1px; }
+  .fc-val.org { color: var(--orange); }
+  .fc-val.gld { color: var(--gold); }
+  .fc-lbl { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-dim); }
+
+  .anke-float {
+    position: absolute;
+    top: 50%; left: -44px;
+    transform: translateY(-50%);
+    background: var(--olive);
+    border-radius: 14px;
+    padding: 0.85rem 1rem;
+    display: flex;
+    gap: 0.6rem;
+    align-items: center;
+    box-shadow: 0 8px 24px rgba(43,50,16,0.18);
+    max-width: 168px;
+  }
+
+  .af-av {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: rgba(251,248,239,0.15);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--cream);
+    font-family: 'Anton', sans-serif;
+  }
+
+  .af-name { font-size: 0.56rem; color: rgba(251,248,239,0.55); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 1px; }
+  .af-text { font-size: 0.7rem; color: var(--cream); line-height: 1.35; }
+
+  /* SHARED SECTION */
+  .sec-ey {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .sey-line { width: 24px; height: 1.5px; background: var(--orange); }
+  .sey-text { font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange); font-weight: 600; }
+
+  .sec-h {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2.4rem, 4vw, 4rem);
+    color: var(--forest);
+    line-height: 0.95;
+  }
+
+  .sec-h .sc {
+    font-family: 'Dancing Script', cursive;
+    font-size: 0.72em;
+    font-weight: 600;
+    color: var(--orange);
+    display: block;
+    line-height: 1.3;
+  }
+
+  /* RECOGNITION */
+  .s-recog {
+    background: var(--forest);
+    padding: 8rem 6rem;
+  }
+
+  .recog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(251,248,239,0.07);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 3.5rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .r-card {
+    background: var(--forest);
+    padding: 2.5rem;
+    transition: background 0.3s;
+  }
+
+  .r-card:hover { background: rgba(80,86,49,0.4); }
+
+  .r-num {
+    font-family: 'Anton', sans-serif;
+    font-size: 4.5rem;
+    color: rgba(251,248,239,0.06);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .r-title { font-size: 1rem; font-weight: 600; color: var(--cream); margin-bottom: 0.65rem; line-height: 1.3; }
+  .r-text  { font-size: 0.87rem; color: rgba(251,248,239,0.5); line-height: 1.75; font-weight: 300; }
+
+  /* TEAM */
+  .s-team { padding: 6rem 6rem; background: var(--cream); }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .team-card {
+    background: var(--sand);
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid rgba(43,50,16,0.07);
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .team-card::before {
+    content: '';
+    position: absolute;
+    bottom: -30px; right: -30px;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: rgba(222,110,39,0.06);
+  }
+
+  .team-card:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(43,50,16,0.09); }
+
+  .team-icon {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+    font-size: 1.2rem;
+  }
+
+  .team-role {
+    font-size: 0.58rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--orange);
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+  }
+
+  .team-title {
+    font-family: 'Anton', sans-serif;
+    font-size: 1.15rem;
+    color: var(--forest);
+    letter-spacing: 0.01em;
+    margin-bottom: 0.6rem;
+    line-height: 1.2;
+  }
+
+  .team-text { font-size: 0.85rem; color: var(--text-sec); line-height: 1.7; font-weight: 300; }
+
+  /* PROMISE */
+  .s-promise {
+    background: var(--sand);
+    padding: 8rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .s-promise::after {
+    content: 'MOTIVRA';
+    position: absolute;
+    font-family: 'Anton', sans-serif;
+    font-size: 14rem;
+    color: rgba(43,50,16,0.03);
+    right: -2rem; top: 50%;
+    transform: translateY(-50%);
+    white-space: nowrap;
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  .promise-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+  }
+
+  .promise-quote {
+    border-left: 3px solid var(--orange);
+    padding-left: 1.5rem;
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.4rem;
+    color: var(--text-sec);
+    line-height: 1.65;
+    margin: 2rem 0;
+  }
+
+  .promise-quote strong { color: var(--forest); font-weight: 700; }
+
+  .pstats {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: rgba(43,50,16,0.1);
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .ps {
+    background: var(--cream);
+    padding: 1.8rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: background 0.3s;
+  }
+
+  .ps:hover { background: #f0ede3; }
+
+  .ps-val { font-family: 'Anton', sans-serif; font-size: 2.8rem; line-height: 1; color: var(--orange); flex-shrink: 0; width: 90px; }
+  .ps-val.g { color: var(--olive); }
+  .ps-val.gld { color: var(--gold); }
+  .ps-title { font-size: 0.92rem; font-weight: 600; color: var(--forest); margin-bottom: 0.15rem; }
+  .ps-text  { font-size: 0.8rem; color: var(--text-sec); line-height: 1.5; font-weight: 300; }
+
+  /* METHOD */
+  .s-method { padding: 8rem 6rem; }
+
+  .method-inner { max-width: 1200px; margin: 0 auto; }
+
+  .method-grid {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 5rem;
+    margin-top: 4rem;
+  }
+
+  .method-nav { position: sticky; top: 90px; height: fit-content; }
+
+  .mn-item { padding: 1.2rem 0; border-bottom: 1px solid rgba(43,50,16,0.08); cursor: pointer; }
+  .mn-num  { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); font-weight: 600; margin-bottom: 0.25rem; }
+  .mn-ttl  { font-family: 'Anton', sans-serif; font-size: 1.1rem; color: var(--text-sec); transition: color 0.2s; letter-spacing: 0.01em; }
+  .mn-item:hover .mn-ttl { color: var(--forest); }
+
+  .mstep {
+    padding-bottom: 3.5rem;
+    margin-bottom: 3.5rem;
+    border-bottom: 1px solid rgba(43,50,16,0.08);
+  }
+
+  .mstep:last-child { border-bottom: none; }
+
+  .mstep-top { display: flex; align-items: flex-start; gap: 1.2rem; margin-bottom: 1.2rem; }
+
+  .mstep-num { font-family: 'Anton', sans-serif; font-size: 5rem; color: rgba(43,50,16,0.07); line-height: 1; flex-shrink: 0; }
+
+  .mstep-head { padding-top: 0.7rem; }
+  .mstep-lbl  { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--orange); font-weight: 600; margin-bottom: 0.35rem; }
+  .mstep-ttl  { font-family: 'Anton', sans-serif; font-size: 1.6rem; color: var(--forest); letter-spacing: 0.01em; line-height: 1.1; }
+
+  .mstep-text { font-size: 0.92rem; color: var(--text-sec); line-height: 1.85; max-width: 520px; margin-bottom: 1.4rem; font-weight: 300; }
+
+  .mcards { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+  .mcard {
+    background: var(--sand);
+    border-radius: 14px;
+    padding: 1.2rem 1.3rem;
+    border: 1px solid rgba(43,50,16,0.07);
+    transition: background 0.2s;
+  }
+
+  .mcard:hover { background: #dcdacf; }
+
+  .mcard-tag  { font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--orange); font-weight: 600; margin-bottom: 0.35rem; }
+  .mcard-text { font-size: 0.82rem; color: var(--text-sec); line-height: 1.6; font-weight: 300; }
+
+  /* PROGRAM */
+  .s-program { background: var(--forest); padding: 8rem 6rem; }
+
+  .prog-tl {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(251,248,239,0.07);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 3.5rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .ptb {
+    background: var(--forest);
+    padding: 2.2rem;
+    transition: background 0.3s;
+  }
+
+  .ptb:hover { background: rgba(80,86,49,0.35); }
+
+  .ptb-phase { font-size: 0.56rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange); font-weight: 600; margin-bottom: 0.4rem; }
+  .ptb-weeks { font-family: 'Anton', sans-serif; font-size: 3rem; color: rgba(251,248,239,0.08); line-height: 1; margin-bottom: 0.5rem; }
+  .ptb-ttl   { font-family: 'Anton', sans-serif; font-size: 1.05rem; color: var(--cream); margin-bottom: 0.55rem; letter-spacing: 0.01em; }
+  .ptb-text  { font-size: 0.8rem; color: rgba(251,248,239,0.45); line-height: 1.7; font-weight: 300; }
+
+  .inc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(251,248,239,0.07);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 1px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .inc-b { background: var(--olive); padding: 1.8rem 2rem; }
+  .inc-tag  { font-size: 0.56rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 0.4rem; }
+  .inc-ttl  { font-family: 'Anton', sans-serif; font-size: 1rem; color: var(--cream); margin-bottom: 0.3rem; letter-spacing: 0.01em; }
+  .inc-text { font-size: 0.8rem; color: rgba(251,248,239,0.55); line-height: 1.65; font-weight: 300; }
+
+  /* INVESTMENT */
+  .s-invest { padding: 8rem 6rem; }
+
+  .inv-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+
+  .inv-text { font-size: 0.92rem; color: var(--text-sec); line-height: 1.85; margin-bottom: 1.2rem; font-weight: 300; }
+  .inv-text strong { color: var(--forest); font-weight: 600; }
+
+  .price-card {
+    background: var(--forest);
+    border-radius: 28px;
+    padding: 2.8rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .price-card::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 200px; height: 200px;
+    border-radius: 50%;
+    background: rgba(222,110,39,0.08);
+  }
+
+  .pc-tag   { font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--orange); font-weight: 600; margin-bottom: 0.9rem; }
+  .pc-price { font-family: 'Anton', sans-serif; font-size: 5rem; color: var(--cream); line-height: 1; margin-bottom: 0.3rem; letter-spacing: -0.02em; }
+  .pc-per   { font-size: 0.72rem; color: rgba(251,248,239,0.4); margin-bottom: 2rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .pc-div   { height: 1px; background: rgba(251,248,239,0.1); margin-bottom: 1.5rem; }
+
+  .pc-list  { list-style: none; margin-bottom: 2rem; display: flex; flex-direction: column; gap: 10px; }
+  .pc-list li { display: flex; align-items: center; gap: 0.8rem; font-size: 0.88rem; color: rgba(251,248,239,0.6); font-weight: 300; }
+  .pc-dot   { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+
+  .btn-pc {
+    width: 100%;
+    background: var(--orange);
+    color: var(--cream);
+    border: none;
+    padding: 1rem;
+    border-radius: 100px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+  }
+
+  .btn-pc:hover { background: #C55E1F; }
+
+  .pc-split {
+    background: rgba(184,148,63,0.1);
+    border-radius: 12px;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid rgba(184,148,63,0.2);
+  }
+
+  .pc-split-left { }
+  .pc-split-label { font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 2px; }
+  .pc-split-val   { font-family: 'Anton', sans-serif; font-size: 1.4rem; color: var(--cream); line-height: 1; }
+  .pc-split-sub   { font-size: 0.68rem; color: rgba(251,248,239,0.45); margin-top: 1px; }
+  .pc-split-pm    { font-size: 0.72rem; color: rgba(251,248,239,0.4); text-align: right; line-height: 1.4; }
+  .pc-split-pm strong { color: var(--gold); font-family: 'Anton', sans-serif; font-size: 1rem; display: block; }
+
+  .pc-note { font-size: 0.68rem; color: rgba(251,248,239,0.25); text-align: center; margin-top: 1rem; letter-spacing: 0.04em; text-transform: uppercase; }
+
+  /* TESTIMONIALS */
+  .s-testi { background: var(--sand); padding: 8rem 6rem; }
+
+  .testi-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(43,50,16,0.09);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 3.5rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .t-card {
+    background: var(--cream);
+    padding: 2.2rem;
+    transition: all 0.3s;
+    border-top: 3px solid transparent;
+  }
+
+  .t-card:hover { background: #f5f2e9; border-top-color: var(--orange); }
+
+  .t-open { font-family: 'Anton', sans-serif; font-size: 4.5rem; color: var(--orange); line-height: 0.8; margin-bottom: 0.8rem; opacity: 0.25; }
+  .t-q    { font-family: 'Dancing Script', cursive; font-size: 1.05rem; color: var(--text-sec); line-height: 1.7; margin-bottom: 1.5rem; }
+  .t-name { font-size: 0.85rem; font-weight: 600; color: var(--forest); }
+  .t-det  { font-size: 0.68rem; color: var(--text-dim); margin-top: 2px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  /* CTA */
+  .s-cta {
+    background: var(--orange);
+    padding: 10rem 6rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .s-cta::before {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: 50%;
+    transform: translateX(-50%);
+    width: 500px; height: 250px;
+    border-radius: 50%;
+    background: rgba(43,50,16,0.1);
+  }
+
+  .cta-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+
+  .cta-h { font-family: 'Anton', sans-serif; font-size: clamp(3rem, 6vw, 5.5rem); color: var(--cream); line-height: 0.93; margin-bottom: 0.3rem; }
+  .cta-sc { font-family: 'Dancing Script', cursive; font-size: clamp(2rem, 4vw, 3.5rem); font-weight: 600; color: var(--forest); display: block; margin-bottom: 1.5rem; }
+  .cta-sub { font-size: 1rem; color: rgba(251,248,239,0.78); line-height: 1.75; max-width: 440px; margin: 0 auto 3rem; font-weight: 300; }
+  .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+  .btn-cw {
+    background: var(--cream);
+    color: var(--orange);
+    border: none;
+    padding: 1rem 2.2rem;
+    border-radius: 100px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .btn-cw:hover { background: var(--forest); color: var(--cream); transform: translateY(-2px); }
+
+  .btn-co {
+    background: transparent;
+    color: var(--cream);
+    border: 1.5px solid rgba(251,248,239,0.45);
+    padding: 1rem 2rem;
+    border-radius: 100px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .btn-co:hover { background: rgba(251,248,239,0.1); border-color: var(--cream); }
+
+  .cta-note { font-size: 0.7rem; color: rgba(251,248,239,0.4); margin-top: 1.5rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* FOOTER */
+  footer {
+    background: var(--forest);
+    padding: 2rem 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .f-logo { font-family: 'Anton', sans-serif; font-size: 1.2rem; color: rgba(251,248,239,0.3); letter-spacing: 0.02em; }
+  .f-r    { font-size: 0.68rem; color: rgba(251,248,239,0.2); letter-spacing: 0.08em; text-transform: uppercase; }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .fade-up.vis { opacity: 1; transform: translateY(0); }
+
+  /* RESPONSIVE */
+  @media (max-width: 960px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 5rem 2rem 4rem; }
+    .s-recog, .s-promise, .s-method, .s-program, .s-invest, .s-testi, .s-cta, .s-team { padding: 4rem 1.5rem; }
+    .recog-grid, .prog-tl, .testi-grid, .inc-grid, .team-grid { grid-template-columns: 1fr; }
+    .promise-inner, .inv-grid, .method-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .method-nav { display: none; }
+    .mcards { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 0.8rem; text-align: center; padding: 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">MOTIVRA<span class="nav-logo-script">.</span></a>
+  <ul class="nav-links">
+    <li><a href="#methode">Methode</a></li>
+    <li><a href="#programma">Programma</a></li>
+    <li><a href="#investering">Investering</a></li>
+  </ul>
+  <a href="#investering" class="nav-cta">Start gratis intake</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="eyebrow">
+      <div class="eyebrow-line"></div>
+      <div class="eyebrow-text">12 weken · De je coachrMethode</div>
+    </div>
+    <h1>
+      <div class="hero-headline">WAT ALS HET<br>DEZE KEER</div>
+      <span class="hero-script">niet over wilskracht gaat?</span>
+    </h1>
+    <p class="hero-sub">
+      Je hebt alles geprobeerd. Apps, schema's, bootcamps.
+      Het werkte even — tot het niet meer werkte.
+      <strong>Dat is niet jouw fout. Het is de methode.</strong>
+    </p>
+    <div class="hero-actions">
+      <a href="#investering" class="btn-primary">Start gratis digitale intake</a>
+      <a href="#methode" class="btn-outline">Hoe het werkt</a>
+    </div>
+    <div class="hero-proof">
+      <div class="proof-avs">
+        <div class="proof-av o">S</div>
+        <div class="proof-av">M</div>
+        <div class="proof-av">L</div>
+        <div class="proof-av">R</div>
+        <div class="proof-av">+</div>
+      </div>
+      <div class="proof-text"><strong>200+ vrouwen</strong> gingen je voor<br>gemiddeld 81% consistentie na 12 weken</div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-graphic">
+      <div class="float-card tr">
+        <div class="fc-val org" id="h-pct">0%</div>
+        <div class="fc-lbl">Consistentie</div>
+      </div>
+      <div class="float-card bl">
+        <div class="fc-val gld" id="h-wk">0</div>
+        <div class="fc-lbl">Weken · Blijvend</div>
+      </div>
+      <div class="anke-float">
+        <div class="af-av">★</div>
+        <div>
+          <div class="af-name">Jouw coach</div>
+          <div class="af-text">Drie op een rij. Zo begint het.</div>
+        </div>
+      </div>
+      <div class="hg-card">
+        <div class="hg-label">Jouw anker — vandaag</div>
+        <div class="hg-title">Na de ochtendkoffie:<br>5 min buiten lopen</div>
+        <div class="hg-meta">Rond 08:30 · Dag 15 van 84</div>
+        <div class="hg-week">
+          <div class="hg-day done">✓<span>Ma</span></div>
+          <div class="hg-day done">✓<span>Di</span></div>
+          <div class="hg-day miss">–<span>Wo</span></div>
+          <div class="hg-day done">✓<span>Do</span></div>
+          <div class="hg-day today">★<span>Vr</span></div>
+          <div class="hg-day fut">·<span>Za</span></div>
+          <div class="hg-day fut">·<span>Zo</span></div>
+        </div>
+        <button class="hg-btn">Gedaan — check-in</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECOGNITION -->
+<section class="s-recog">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="sec-ey fade-up" style="--c:var(--cream);">
+      <div class="sey-line"></div><div class="sey-text">Herkenning</div>
+    </div>
+    <h2 class="sec-h fade-up" style="color:var(--cream);">
+      JE BENT HIER AL EERDER
+      <span class="sc">geweest. Maar niet zo.</span>
+    </h2>
+    <div class="recog-grid">
+      <div class="r-card fade-up"><div class="r-num">01</div><div class="r-title">Je begint groot en enthousiast</div><div class="r-text">Vijf keer per week sporten. Radicaal ander eetpatroon. Alles tegelijk. Na twee weken is het leven sterker dan het plan.</div></div>
+      <div class="r-card fade-up"><div class="r-num">02</div><div class="r-title">Het leven wint het van het schema</div><div class="r-text">Een drukke week, zieke kinderen, een deadline. Het schema breekt — en daarmee ook het gevoel dat je het kunt. Tot de volgende maandag.</div></div>
+      <div class="r-card fade-up"><div class="r-num">03</div><div class="r-title">Je denkt dat jij het probleem bent</div><div class="r-text">Maar dat is nooit zo. Andere vrouwen met hetzelfde leven worstelen precies hetzelfde. De methode klopt niet. Niet jij.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section class="s-team">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="sec-ey fade-up"><div class="sey-line"></div><div class="sey-text">Ontwikkeld door experts</div></div>
+    <h2 class="sec-h fade-up">DRIE DISCIPLINES.<span class="sc">één geïntegreerde methode.</span></h2>
+    <div class="team-grid">
+      <div class="team-card fade-up">
+        <div class="team-icon">💪</div>
+        <div class="team-role">Personal Trainer</div>
+        <div class="team-title">BEWEGEN DAT PAST<br>BIJ JE LICHAAM</div>
+        <div class="team-text">De bewegingscomponent is ontworpen door een gecertificeerde personal trainer. Niet generiek, maar aangepast aan wat jouw lichaam aankan en waar je op dit moment bent.</div>
+      </div>
+      <div class="team-card fade-up">
+        <div class="team-icon">🌿</div>
+        <div class="team-role">Voedingsdeskundige</div>
+        <div class="team-title">VOEDING ALS<br>ONDERSTEUNING</div>
+        <div class="team-text">Geen dieet, geen verboden voedsel. De voedingsinzichten zijn ontwikkeld door een erkende voedingsdeskundige — gericht op duurzame energie, niet op restricties.</div>
+      </div>
+      <div class="team-card fade-up">
+        <div class="team-icon">🧠</div>
+        <div class="team-role">Gedragsexpert & Veranderkundige</div>
+        <div class="team-title">DE WETENSCHAP<br>ACHTER GEWOONTES</div>
+        <div class="team-text">De je coachrMethode is gebouwd op bewezen gedragspsychologie. Ontwikkeld door een veranderkundige die weet waarom oude methodes falen — en wat er voor nodig is om gedrag echt te laten beklijven.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROMISE -->
+<section class="s-promise">
+  <div class="promise-inner">
+    <div>
+      <div class="sec-ey fade-up"><div class="sey-line"></div><div class="sey-text">De belofte</div></div>
+      <h2 class="sec-h fade-up">NA 12 WEKEN EEN GEWOONTE<span class="sc">die echt blijft.</span></h2>
+      <div class="promise-quote fade-up">Niet afvallen als belofte. Niet een sixpack.<br>Maar <strong>weten hoe je jezelf terugvindt.</strong></div>
+      <p class="inv-text fade-up" style="font-size:.92rem;color:var(--text-sec);line-height:1.85;font-weight:300;max-width:400px;">Meer energie. Comfortabeler in je lijf. En voor het eerst in jaren het gevoel dat je jezelf niet teleurstelt.</p>
+    </div>
+    <div class="pstats fade-up">
+      <div class="ps"><div class="ps-val">12</div><div><div class="ps-title">Weken structuur</div><div class="ps-text">Vier fasen, elk met een eigen doel en psychologische logica.</div></div></div>
+      <div class="ps"><div class="ps-val">81%</div><div><div class="ps-title">Gemiddelde consistentie</div><div class="ps-text">Na het programma, gemeten over de volledige 12 weken.</div></div></div>
+      <div class="ps"><div class="ps-val gld">3×</div><div><div class="ps-title">Sneller terug na terugval</div><div class="ps-text">Deelnemers herstellen gemiddeld 3× sneller dan zonder methode.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- METHOD -->
+<section class="s-method" id="methode">
+  <div class="method-inner">
+    <div class="sec-ey fade-up"><div class="sey-line"></div><div class="sey-text">De je coachrMethode</div></div>
+    <h2 class="sec-h fade-up">DRIE LAGEN.<span class="sc">één systeem dat werkt.</span></h2>
+    <div class="method-grid">
+      <div class="method-nav">
+        <div class="mn-item"><div class="mn-num">01</div><div class="mn-ttl">BEGRIJPEN</div></div>
+        <div class="mn-item"><div class="mn-num">02</div><div class="mn-ttl">BOUWEN</div></div>
+        <div class="mn-item"><div class="mn-num">03</div><div class="mn-ttl">TERUGVAL</div></div>
+      </div>
+      <div>
+        <div class="mstep fade-up">
+          <div class="mstep-top"><div class="mstep-num">01</div><div class="mstep-head"><div class="mstep-lbl">Laag 1</div><div class="mstep-ttl">EERST BEGRIJPEN,<br>DAN PAS BEGINNEN</div></div></div>
+          <p class="mstep-text">Geen schema op dag één. We beginnen met jouw verhaal — wat werkte vroeger, wat houdt je echt tegen, hoe ziet jouw leven er werkelijk uit. Niet het ideale leven. Het echte.</p>
+          <div class="mcards">
+            <div class="mcard"><div class="mcard-tag">Digitale intake</div><div class="mcard-text">Geen vragenlijst, maar een gesprek. Eerlijk en persoonlijk — bouwt je profiel op.</div></div>
+            <div class="mcard"><div class="mcard-tag">Persoonlijk profiel</div><div class="mcard-text">Jouw belemmeringen, ankerpunten en waarom. Je coach gebruikt dit als vertrekpunt.</div></div>
+          </div>
+        </div>
+        <div class="mstep fade-up">
+          <div class="mstep-top"><div class="mstep-num">02</div><div class="mstep-head"><div class="mstep-lbl">Laag 2</div><div class="mstep-ttl">BOUWEN OP<br>WAT ER AL IS</div></div></div>
+          <p class="mstep-text">Nieuw gedrag werkt alleen als het een plek heeft in je bestaande leven. We koppelen beweging aan wat je al automatisch doet. En we beginnen altijd kleiner dan jij zelf zou kiezen.</p>
+          <div class="mcards">
+            <div class="mcard"><div class="mcard-tag">je coachrprincipe</div><div class="mcard-text">Beweging krijgt een vaste plek naast iets wat al bestaat in jouw dag.</div></div>
+            <div class="mcard"><div class="mcard-tag">Minimumdosis</div><div class="mcard-text">De startdosis is bewust klein. Succeservaring in week 1 voorspelt week 12.</div></div>
+          </div>
+        </div>
+        <div class="mstep fade-up">
+          <div class="mstep-top"><div class="mstep-num">03</div><div class="mstep-head"><div class="mstep-lbl">Laag 3</div><div class="mstep-ttl">TERUGVAL IS<br>GEEN FALEN</div></div></div>
+          <p class="mstep-text">In onze methode is terugval een gegarandeerd onderdeel van het proces — en we zijn er klaar voor. Niet met een schouderklopje, maar met een concreet plan.</p>
+          <div class="mcards">
+            <div class="mcard"><div class="mcard-tag">Vaste procedure</div><div class="mcard-text">Begrijpen wat er gebeurde → plan aanpassen → drempel verlagen. Nooit verhogen.</div></div>
+            <div class="mcard"><div class="mcard-tag">De echte vaardigheid</div><div class="mcard-text">Na 12 weken weet je hoe je jezelf terugvindt. Dat neem je altijd mee.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section class="s-program" id="programma">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="sec-ey fade-up"><div class="sey-line"></div><div class="sey-text">Het programma</div></div>
+    <h2 class="sec-h fade-up" style="color:var(--cream);">12 WEKEN. VIER FASEN.<span class="sc">één blijvend resultaat.</span></h2>
+    <div class="prog-tl">
+      <div class="ptb fade-up"><div class="ptb-phase">Fase 1</div><div class="ptb-weeks">1–2</div><div class="ptb-ttl">BEWIJZEN</div><div class="ptb-text">Jij bewijst aan jezelf dat het lukt. Acties zo klein dat mislukken bijna onmogelijk is.</div></div>
+      <div class="ptb fade-up"><div class="ptb-phase">Fase 2</div><div class="ptb-weeks">3–5</div><div class="ptb-ttl">VERANKEREN</div><div class="ptb-text">De gewoonte krijgt zijn plek. Je overleeft je eerste drukke week. Niet perfect — maar de draad raakt niet kwijt.</div></div>
+      <div class="ptb fade-up"><div class="ptb-phase">Fase 3</div><div class="ptb-weeks">6–9</div><div class="ptb-ttl">UITBOUWEN</div><div class="ptb-text">Nu echte opbouw. Je merkt dat je anders slaapt, meer energie hebt.</div></div>
+      <div class="ptb fade-up"><div class="ptb-phase">Fase 4</div><div class="ptb-weeks">10–12</div><div class="ptb-ttl">VOOR HET LEVEN</div><div class="ptb-text">Voorbereiding op het leven na het programma. Jouw zelfstandigheidsplan.</div></div>
+    </div>
+    <div class="inc-grid">
+      <div class="inc-b fade-up"><div class="inc-tag">Wekelijks</div><div class="inc-ttl">GROEPSCOACHING</div><div class="inc-text">45 min online met max. 8 vrouwen. Begeleide reflectie. Je bent niet de enige.</div></div>
+      <div class="inc-b fade-up"><div class="inc-tag">Persoonlijk</div><div class="inc-ttl">TWEE 1-OP-1 MOMENTEN</div><div class="inc-text">Bij de start en halverwege. Je persoonlijke coach kent jouw profiel. Geen standaardgesprek.</div></div>
+      <div class="inc-b fade-up"><div class="inc-tag">Dagelijks</div><div class="inc-ttl">MOTIVRA APP</div><div class="inc-text">Contextgevoelige nudges, check-ins en patrooninzichten op de momenten dat je er baat bij hebt.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- INVESTMENT -->
+<section class="s-invest" id="investering">
+  <div class="inv-grid">
+    <div>
+      <div class="sec-ey fade-up"><div class="sey-line"></div><div class="sey-text">Investering</div></div>
+      <h2 class="sec-h fade-up" style="margin-bottom:1.5rem;">ÉÉN BESLISSING.<span class="sc">een leven lang verschil.</span></h2>
+      <p class="inv-text fade-up">Je hebt eerder geïnvesteerd in apps die niets deden en schema's die niet pasten. Dit is anders — omdat de methode is gebouwd op hoe gedrag écht werkt. Je start gratis met de digitale intake. Na afronding krijg je direct toegang tot de app.</p>
+      <p class="inv-text fade-up">We bieden een <strong>resultaatgarantie</strong>: als je het programma volgt en na 12 weken geen aantoonbare gedragsverandering hebt, krijg je je investering terug.</p>
+    </div>
+    <div class="price-card fade-up">
+      <div class="pc-tag">12 Weken Programma — Volledig</div>
+      <div class="pc-price">€397</div>
+      <div class="pc-per">Eenmalig — minder dan €34 per maand</div>
+      <div class="pc-split">
+        <div class="pc-split-left">
+          <div class="pc-split-label">Gespreide betaling</div>
+          <div class="pc-split-val">3× €139</div>
+          <div class="pc-split-sub">Per maand — totaal €417</div>
+        </div>
+        <div class="pc-split-pm">
+          <strong>€34</strong>per maand<br>bij eenmalig
+        </div>
+      </div>
+      <div class="pc-div"></div>
+      <ul class="pc-list">
+        <li><div class="pc-dot"></div>12 weken toegang tot de Motivra app</li>
+        <li><div class="pc-dot"></div>Wekelijkse groepscoaching (45 min)</li>
+        <li><div class="pc-dot"></div>2× persoonlijk gesprek met je coach</li>
+        <li><div class="pc-dot"></div>Digitale intake + persoonlijk profiel</li>
+        <li><div class="pc-dot"></div>Zelfstandigheidsplan aan het einde</li>
+        <li><div class="pc-dot"></div>Resultaatgarantie</li>
+      </ul>
+      <a href="#" class="btn-pc">Start gratis digitale intake</a>
+      <div class="pc-note">Gratis starten · Geen creditcard · Direct toegang tot de app</div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="s-testi">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="sec-ey fade-up"><div class="sey-line"></div><div class="sey-text">Ervaringen</div></div>
+    <h2 class="sec-h fade-up">GEEN VOOR-NA FOTO'S.<span class="sc">echte verhalen.</span></h2>
+    <div class="testi-grid">
+      <div class="t-card fade-up"><div class="t-open">"</div><div class="t-q">Ik had al zoveel geprobeerd dat ik eigenlijk niet meer geloofde dat het kon. Maar dit voelt echt anders — niet omdat ik meer doe, maar omdat ik eindelijk begrijp waarom het eerder niet werkte.</div><div class="t-name">Marieke, 38</div><div class="t-det">Twee kinderen · Fulltime baan</div></div>
+      <div class="t-card fade-up"><div class="t-open">"</div><div class="t-q">Het begin was belachelijk klein. Ik dacht: dit kan toch geen verschil maken? Maar die kleine acties lieten me zien dat ik het kan. Daarna was het makkelijker om meer te doen.</div><div class="t-name">Sandra, 42</div><div class="t-det">Ondernemer · Constant druk</div></div>
+      <div class="t-card fade-up"><div class="t-open">"</div><div class="t-q">Wat ik het meest waardeer is dat er geen schuldgevoel is als het even niet lukt. Er is gewoon een plan voor dat moment. Dat had ik nooit eerder gehad.</div><div class="t-name">Lisa, 35</div><div class="t-det">Partner · Advocatenkantoor</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="s-cta">
+  <div class="cta-inner">
+    <h2 class="cta-h">KLAAR OM HET</h2>
+    <span class="cta-sc">anders te doen?</span>
+    <p class="cta-sub">Start met de digitale intake — gratis, geen verplichtingen. Na afronding krijg je direct toegang tot de Motivra app. Van daaruit kun je het volledige programma starten wanneer je er klaar voor bent.</p>
+    <div class="cta-btns">
+      <a href="#investering" class="btn-cw">Start gratis digitale intake</a>
+      <a href="#methode" class="btn-co">Hoe het werkt</a>
+    </div>
+    <div class="cta-note">Gratis · Geen creditcard nodig · Toegang tot de app</div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">MOTIVRA.</div>
+  <div class="f-r">© 2025 · De je coachrMethode · Privacybeleid</div>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('vis'); });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+  function countUp(el, target, suffix, dur) {
+    let v = 0; const step = target / (dur / 16);
+    const t = setInterval(() => {
+      v = Math.min(v + step, target);
+      el.textContent = Math.round(v) + (suffix || '');
+      if (v >= target) clearInterval(t);
+    }, 16);
+  }
+
+  setTimeout(() => {
+    countUp(document.getElementById('h-pct'), 81, '%', 1200);
+    countUp(document.getElementById('h-wk'),  12, '',  800);
+  }, 700);
+</script>
+</body>
+</html>
